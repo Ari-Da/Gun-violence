@@ -9,9 +9,8 @@ function makeGraphs(error, projectsJson, statesJson) {
 	var gunViolenceProjects = projectsJson;
 	var dateFormat = d3.time.format("%m/%d/%Y");
 	gunViolenceProjects.forEach(function(d) {
-    console.log(d["date"]);
+    //console.log(d["date"]);
 		d["date"] = dateFormat.parse(d["date"]);
-      console.log(d["date"]);
 		d["date"].setDate(1);
 		d["n_killed"] = +d["n_killed"];
 		d["n_injured"] = +d["n_injured"];
@@ -27,9 +26,9 @@ function makeGraphs(error, projectsJson, statesJson) {
 	var totalInjuredDim = ndx.dimension(function(d) { return d["n_injured"]; });
 
 	//Calculate metrics
-	var numProjectsByDate = dateDim.group();
-	var totalKilledByState = stateDim.group().reduceSum(function(d) {
-		return d["n_killed"];
+	var countByDate = dateDim.group();
+	var countByState = stateDim.group().reduceSum(function(d) {
+		return d["n_killed"] + d["n_injured"];
 	//var totalInjuredByState = stateDim.group().reduceSum(function(d) {
 		//return d["n_injured"];
 	});
@@ -38,7 +37,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 
   	var totalKilled = ndx.groupAll().reduceSum(function(d) {return d["n_killed"];});
   	var totalInjured = ndx.groupAll().reduceSum(function(d) {return d["n_injured"];});
-	var max_state = totalKilledByState.top(1)[0].value;
+	var max_state = countByState.top(1)[0].value;
     //var max_state = totalInjuredByState.top(1)[0].value;
 
 	//Define values (to be used in charts)
@@ -67,7 +66,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 		.height(160)
 		.margins({top: 10, right: 50, bottom: 30, left: 50})
 		.dimension(dateDim)
-		.group(numProjectsByDate)
+		.group(countByDate)
 		.transitionDuration(500)
 		.x(d3.time.scale().domain([minDate, maxDate]))
 		.elasticY(true)
@@ -77,8 +76,8 @@ function makeGraphs(error, projectsJson, statesJson) {
 	usChart.width(1000)
 		.height(330)
 		.dimension(stateDim)
-		.group(totalKilledByState)
-		.colors(["#E2F2FF", "#C4E4FF", "#9ED2FF", "#81C5FF", "#6BBAFF", "#51AEFF", "#36A2FF", "#1E96FF", "#0089FF", "#0061B5"])
+		.group(countByState)
+		.colors(["#FF9933", "#FF6600", "#FF3300", "#FF0000", "#D80000", "#C80000", "#B80000", "#A80000", "#A00000", "#900000"])
 		.colorDomain([0, max_state])
 		.overlayGeoJson(statesJson["features"], "state", function (d) {
 			return d.properties.name;
@@ -89,7 +88,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 		.title(function (p) {
 			return "State: " + p["key"]
 					+ "\n"
-					+ "Total Killed: " + p["value"];
+					+ "Total killed and injured: " + p["value"];
 		});
 
     dc.renderAll();
