@@ -103,27 +103,27 @@ def incidentsWithinRange(id, d):
     connection.close()
     return json.dumps([points, []])
 
-@app.route("/img/id=<id>", methods=['GET'])
-def getImg(id):
-    incident_id = int(id)
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    fs = GridFS(connection[DBS_NAME])
-
-    project = collection.find_one({'incident_id': incident_id}, projection=FIELDS)
-
-    img = None
-
-    state = project['state']
-    print(state)
-    state = state.replace(" ", "")
-    state = state + ".jpg"
-    for grid_output in fs.find({'filename': state}):
-        img = base64.b64encode(grid_output.read()).decode('utf-8')
-
-    # now you have the entire document in project & image in img
-    connection.close()
-    return json.dumps(img)
+# @app.route("/img/id=<id>", methods=['GET'])
+# def getImg(id):
+#     incident_id = int(id)
+#     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+#     collection = connection[DBS_NAME][COLLECTION_NAME]
+#     fs = GridFS(connection[DBS_NAME])
+#
+#     project = collection.find_one({'incident_id': incident_id}, projection=FIELDS)
+#
+#     img = None
+#
+#     state = project['state']
+#     print(state)
+#     state = state.replace(" ", "")
+#     state = state + ".jpg"
+#     for grid_output in fs.find({'filename': state}):
+#         img = base64.b64encode(grid_output.read()).decode('utf-8')
+#
+#     # now you have the entire document in project & image in img
+#     connection.close()
+#     return json.dumps(img)
 
 @app.route("/content/id=<id>", methods=['GET'])
 def getContent(id):

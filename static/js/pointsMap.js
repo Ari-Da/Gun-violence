@@ -40,7 +40,7 @@ var getCircles = function (result) {
 $.ajax({
     type: "GET",
     dataType: "json",
-    url: "http://localhost:5000/locations",
+    url: "/locations",
     success: getCircles
 });
 
@@ -57,7 +57,7 @@ function getIncidentContent(id) {
   $.ajax({
       type: "GET",
       dataType: "json",
-      url: "http://localhost:5000/content/id=" + id,
+      url: "/content/id=" + id,
       success: function (result) {
           var div = $('#incident_content');
 
@@ -123,7 +123,7 @@ function getIncidentContent(id) {
 
           showContent += "</div>";
 
-          //var showImg = "<img id='state_img' src='http://localhost:5000/img/id=" + id + "'>";
+          //var showImg = "<img id='state_img' src='/img/id=" + id + "'>";
           $('#incident_content').html(showContent);
       }
   });

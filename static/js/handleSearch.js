@@ -13,7 +13,7 @@ function searchAll(term, year){
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://localhost:5000/locations?user_input=" + term + "&year_input=" + year,
+        url: "/locations?user_input=" + term + "&year_input=" + year,
         success: function (result) {
             if(usMap.hasLayer(circleLayer)) {
                 getCircles(result);
@@ -35,7 +35,7 @@ function searchNearby(e, id, dist) {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "http://localhost:5000/distance/id=" + id + "/dist=" + dist,
+            url: "/distance/id=" + id + "/dist=" + dist,
             success: getCircles
         });
     }

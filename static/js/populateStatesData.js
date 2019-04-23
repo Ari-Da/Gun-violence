@@ -2,7 +2,7 @@
 $.ajax({
     type: "GET",
     dataType: "json",
-    url: "http://localhost:5000/counts",
+    url: "/counts",
     success: function (counts) {
         statesData['features'].forEach(state => {
             delete state.properties.density;

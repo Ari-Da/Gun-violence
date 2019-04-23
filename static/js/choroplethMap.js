@@ -149,6 +149,6 @@ function onEachFeature(feature, layer) {
 $.ajax({
     type: "GET",
     dataType: "json",
-    url: "http://localhost:5000/locations",
+    url: "/locations",
     success: getChoropleth
 });
