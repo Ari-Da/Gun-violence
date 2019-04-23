@@ -73,7 +73,6 @@ function getIncidentContent(id) {
           showContent += "<a href='" + result[0]['source_url'] + "' target='_blank'>Read more</a>";
 
           var participantCount = Object.keys(result[0]['participants']).length;
-          console.log(result[0]);
 
           if(participantCount != 0 ) {
               showContent += "<p style='margin-top: 30px;'><span>Number of participants: </span>" + participantCount +"</p>";

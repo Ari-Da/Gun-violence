@@ -29,7 +29,7 @@ html, body {
  .legend {
      line-height: 18px;
      color: #555;
-     width: 110px;
+     width: 130px !important;
  }
  .legend p i {
      width: 18px;
