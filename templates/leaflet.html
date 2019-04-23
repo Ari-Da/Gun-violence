@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+       integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+       crossorigin=""/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./static/css/style.css" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<div id="container">
+    <h1><marquee>Gun Violence- United States of America</marquee></h1>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6">
+          <label for="user_input">Search to know more : </label>
+              <input id="user_input" type="text" class="form-control" placeholder="Search for..." style="width: 83%;">
+            <div class="abc">
+             <button class="btn btn-default" align="center" type="button" onclick="searchAll(document.getElementById('user_input').value, document.getElementById('year').value)" style="float: right;margin-top: -35px;margin-right: 48px;" >Go!</button>
+
+          </div>
+        </div>
+        <div id="slider-container"class="col-sm-12 col-md-6 col-lg-6">
+            <p id="year-info" style="width: 50%;margin: 10px;">
+              <label for="year">Year range:</label>
+              <input type="text" id="year" readonly>
+            </p>
+
+            <div id="slider-range" style="width: 90%;"></div>
+        </div>
+      <!--<div class="col-sm-6"></div> <div class="col-sm-3"></div>-->
+
+    </div>
+
+        <div class="form-horizontal col-md-6" id="user-input-form" tabindex="0">
+            <input type="hidden" id="incident_id" name="incident_id">
+            <input type="hidden" id="distance" name="distance">
+            <input type="hidden" id="term" name="term">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-8 col-sm-12" id="map"><button class="btn btn-primary" id="changeMap" onclick="change(usMap)" style="display:block;margin:20px;">Change Map</button>	</div>
+            <div class="col-md-6 col-lg-4 col-sm-12" id="incident_content"><h1>Click on a point to see more data!</h1></div>
+        </div>
+    </div>
+
+
+</body>
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+crossorigin=""></script>
+
+<script src="./static/js/rangeSlider.js"></script>
+<script src="./static/js/us-states.js"></script>
+<script src="./static/js/pointsMap.js"></script>
+<script src="./static/js/choroplethMap.js"></script>
+<script src="./static/js/changeMap.js"></script>
+<script src="./static/js/handleSearch.js"></script>
+
+</html>

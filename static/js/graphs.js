@@ -26,7 +26,9 @@ function makeGraphs(error, projectsJson, statesJson) {
 	var totalInjuredDim = ndx.dimension(function(d) { return d["n_injured"]; });
 
 	//Calculate metrics
-	var countByDate = dateDim.group();
+	var countByDate = dateDim.group().reduceSum(function(d) {
+		return d["n_killed"] + d["n_injured"];
+	});
 	var countByState = stateDim.group().reduceSum(function(d) {
 		return d["n_killed"] + d["n_injured"];
 	//var totalInjuredByState = stateDim.group().reduceSum(function(d) {
@@ -50,6 +52,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 	var totalKilledND = dc.numberDisplay("#total-kills-nd");
 	var totalInjuredND = dc.numberDisplay("#total-injured-nd");
 
+
     totalInjuredND
         .formatNumber(d3.format("d"))
 		.valueAccessor(function(d){return d; })
@@ -70,7 +73,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 		.transitionDuration(500)
 		.x(d3.time.scale().domain([minDate, maxDate]))
 		.elasticY(true)
-		.xAxisLabel("Year")
+		.xAxisLabel("")
 		.yAxis().ticks(4);
 
 	usChart.width(1000)
