@@ -156,7 +156,7 @@ def addComment(id):
     incident_id = int(id)
     data = request.form
     name = data['user_name']
-    print(name)
+    # print(name)
     comment = data['user_comment']
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DBS_NAME][COLLECTION_NAME]
