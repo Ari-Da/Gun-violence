@@ -65,7 +65,7 @@ def getIncidentData(term, year):
     incidents = collection.find(where, projection=FIELDS, limit=LIMIT)
     points = []
     for inc in incidents:
-        points.append({'id': inc['incident_id'], 'addr': inc['address'], 'lat': inc['loc']['coordinates'][1], 'lng': inc['loc']['coordinates'][0],
+        points.append({'date': inc['date'],'id': inc['incident_id'], 'addr': inc['address'], 'lat': inc['loc']['coordinates'][1], 'lng': inc['loc']['coordinates'][0],
                        'notes': inc['notes']})
 
     pipeline = {
@@ -91,7 +91,7 @@ def incidentsWithinRange(id, d):
 
     if incident != None:
         #print(incident['notes'])
-        incidents = collection.find({"loc": {"$near": {"$geometry": incident['loc'], "$maxDistance": int(d) * 1000}}}, projection=FIELDS).limit(LIMIT)
+        incidents = collection.find({"loc": {"$near": {"$geometry": incident['loc'], "$maxDistance": int(d) * 1000}}}, projection=FIELDS, limit=LIMIT)
         for inc in incidents:
             points.append({'id': inc['incident_id'], 'addr': inc['address'], 'lat': inc['loc']['coordinates'][1],
                            'lng': inc['loc']['coordinates'][0],

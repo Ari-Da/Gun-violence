@@ -8,7 +8,8 @@ function searchAll(term, year){
     });
 
     year = lastYearNo.join(" - ");
-    //alert(year);
+
+    //console.log(year);
 
     $.ajax({
         type: "GET",
