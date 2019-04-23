@@ -92,6 +92,12 @@ html, body {
      position: absolute;
      z-index: 1000;
      bottom: 0;
+     display:block;
+     margin:20px;
+     font-size: 44px;
+     background: transparent;
+     border: none;
+     color: #8B8B8B;
 
  }
  #comment_section {
@@ -110,3 +116,5 @@ html, body {
     padding-top: 20px;
     border-top: 1px solid lightgrey;
 }
+
+
