@@ -1,6 +1,15 @@
-# Introduction
+## Introduction
 
-Utilizes gun violence incidents in U.S.A, during the period 2013 - 2018 in an interactive map. Dataset was taken from Kaggle called [Gun Violence Data](https://www.kaggle.com/jameslko/gun-violence-data)
+This application is built using the Flask micro-framework. It utilizes gun violence incidents in U.S.A, during the period 2013 - 2018 in an interactive map.
+Dataset was taken from Kaggle called [Gun Violence Data](https://www.kaggle.com/jameslko/gun-violence-data)
+
+## Functionality
+
+- View and interact with each individual incidents as points
+- Search for particular incidents containing keyword(s)
+- Add and read comments regarding an incident
+- Search other nearby incidents (using MongoDB's inbuilt capability to search based on geodata)
+- Search based on year range
 
 ## Requirments
 
