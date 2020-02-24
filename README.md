@@ -27,12 +27,12 @@ mongorestore --db GunViolence path/to/gunviolence/folder
 
 3. Clone or download the files from this GitHub repository and run the command to install the necessary packages:
 ```bash
-pip install -r requirements.txt path/to/requirements.txt
+pip install -r path/to/requirements.txt
 ```
 
 4. In command line/terminal execute the flask command to run the app.py file:
 ```bash
-In Unix/Linus: export FLASK_APP=path/to/app.py
+In Unix/Linux: export FLASK_APP=path/to/app.py
 In Windows: set FLASK_APP=hello.py
 
 flask run
