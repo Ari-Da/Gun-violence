@@ -33,7 +33,7 @@ pip install -r path/to/requirements.txt
 4. In command line/terminal execute the flask command to run the app.py file:
 ```bash
 In Unix/Linux: export FLASK_APP=path/to/app.py
-In Windows: set FLASK_APP=hello.py
+In Windows: set FLASK_APP=path/to/app.py
 
 flask run
 ```
