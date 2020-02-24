@@ -20,7 +20,7 @@ Dataset was taken from Kaggle called [Gun Violence Data](https://www.kaggle.com/
 
 1. Download and unzip the processed dataset in a MongoDB database from this link: https://drive.google.com/open?id=1kGDrFaiCeALV3KsCxF6u1jDCX-r5grsD
 
-2. Run the following command to restore the database (GunViolence) with the data. It will create three collections: AllData - holds gun violence data and fs.chunks and fs.files - hold data about state pictures
+2.  In command line/terminal run the following command to restore the database (GunViolence) with the data. It will create three collections: AllData - holds gun violence data and fs.chunks and fs.files - hold data about state pictures. Make sure the database name is GunViolence (as shown below) as MongoDB is case sensitive:
 ```bash
 mongorestore --db GunViolence path/to/gunviolence/folder
 ```
