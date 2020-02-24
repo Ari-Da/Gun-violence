@@ -13,7 +13,7 @@ app = Flask(__name__)
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'GunViolence'
-COLLECTION_NAME = 'Incidents'
+COLLECTION_NAME = 'AllData'
 FIELDS = {'source_url': True, 'comments': True, 'participants': True, 'incident_id': True, 'notes': True, 'state': True, 'n_killed': True, 'n_injured': True, 'date': True, 'address': True, 'loc': True, '_id': False}
 LIMIT = 3000
 
