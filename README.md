@@ -11,10 +11,10 @@ Dataset was taken from Kaggle called [Gun Violence Data](https://www.kaggle.com/
 - Search other nearby incidents (using MongoDB's inbuilt capability to search based on geodata)
 - Search based on year range
 
-## Requirments
+## Requirements
 
-- MongoDB server
-- pip
+- MongoDB server: https://www.mongodb.com/download-center/community
+- pip: https://pip.pypa.io/en/stable/installing/
 
 ## Installation
 
